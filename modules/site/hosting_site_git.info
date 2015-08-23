@@ -1,0 +1,6 @@
+name = Git integration for sites
+description = Allows Hostmaster managed sites to use Git.
+package = Hosting
+dependencies[] = hosting_site
+dependencies[] = hosting_git
+core = 7.x

@@ -35,18 +35,22 @@ function drush_hosting_git_pull_post_provision_git_pull() {
 function hosting_git_pull_hosting_tasks() {
   $tasks = array();
 
-  $tasks['site']['git-pull'] = array(
-    'title' => t('Git pull'),
-    'description' => t('Runs a git pull on the current site.'),
-    'dialog' => TRUE,
-  );
+  if (module_exists('hosting_site_git')) {
+    $tasks['site']['git-pull'] = array(
+      'title' => t('Git pull'),
+      'description' => t('Runs a git pull on the current site.'),
+      'dialog' => TRUE,
+    );
+  }
 
-  $tasks['platform']['git-pull'] = array(
-    'title' => t('Git pull'),
-    'description' => t('Runs a git pull on the current platform.'),
-    'access callback' => 'hosting_git_pull_access_platform_pull',
-    'dialog' => TRUE,
-  );
+  if (module_exists('hosting_platform_git')) {
+    $tasks['platform']['git-pull'] = array(
+      'title' => t('Git pull'),
+      'description' => t('Runs a git pull on the current platform.'),
+      'access callback' => 'hosting_git_pull_access_platform_pull',
+      'dialog' => TRUE,
+    );
+  }
 
   return $tasks;
 }

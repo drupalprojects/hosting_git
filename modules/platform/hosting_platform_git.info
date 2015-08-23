@@ -1,0 +1,6 @@
+name = Git integration for platforms
+description = Allows Hostmaster managed platforms to use Git.
+package = Hosting
+dependencies[] = hosting_platform
+dependencies[] = hosting_git
+core = 7.x
