@@ -39,3 +39,18 @@ function hosting_git_schema() {
 
   return $schema;
 }
+
+
+/**
+ * Enable two new hosting features to preserve the previous default.
+ */
+function hosting_git_update_7300() {
+  if (hosting_feature('git')) {
+    // Enable the new hosting features to keep up with the previous default.
+    $default_hosting_features = array(
+      'hosting_site_git' => 'site_git',
+      'hosting_platform_git' => 'platform_git',
+    );
+    hosting_features_enable($default_hosting_features, $rebuild = TRUE, $enable = TRUE);
+  }
+}
