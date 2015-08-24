@@ -31,7 +31,7 @@ function hosting_site_git_form_alter(&$form, &$form_state, $form_id) {
  */
 function hosting_site_git_node_insert($node) {
   if ($node->type == 'site') {
-    return _hosting_git_upsert($node);
+    return _hosting_git_insert($node);
   }
 }
 

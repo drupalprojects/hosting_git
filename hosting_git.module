@@ -101,7 +101,7 @@ function _hosting_git_node_load_defaults(&$node) {
 /**
  * Private function to insert or update git data.
  */
-function _hosting_git_upsert($node) {
+function _hosting_git_insert($node) {
   if (empty($node->git['repo_url']) || empty($node->git['git_ref'])) {
     _hosting_git_node_load_defaults($node);
   }
