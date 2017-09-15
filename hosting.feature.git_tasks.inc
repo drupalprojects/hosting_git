@@ -67,5 +67,24 @@ function hosting_git_hosting_feature() {
     )
   );
 
+  $features['git_commit'] = array(
+    'title' => t('Git commit task'),
+    'description' => t('Enables committing to git repositories through Aegir.'),
+    'status' => HOSTING_FEATURE_DISABLED,
+    'module' => 'hosting_git_commit',
+    'group' => 'advanced',
+    'role_permissions' => array(
+      'aegir platform manager' => array(
+        'create platform git-commit task',
+      ),
+      'aegir account manager' => array(
+        'create git-commit task',
+      ),
+      'aegir client' => array(
+        'create git-commit task',
+      ),
+    )
+  );
+
   return $features;
 }

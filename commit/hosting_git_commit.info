@@ -1,0 +1,5 @@
+name = Hosting Git Commit
+description = Allow committing changes to a site.
+core = 7.x
+dependencies[] = hosting_site
+dependencies[] = hosting_git
