@@ -4,8 +4,9 @@ use GitWrapper\GitException;
 use GitWrapper\GitWrapper;
 
 /**
- * Implementation of hook_drush_command().
- * Provides provision commands for all devshop tasks.
+ * Implements hook_drush_command().
+ *
+ * Provides provision commands for all tasks.
  */
 function hosting_git_commit_drush_command()
 {
@@ -24,7 +25,7 @@ function hosting_git_commit_drush_command()
 }
 
 /**
- * Implements the provision-fua command.
+ * Implements the provision-commit command.
  */
 function drush_hosting_git_commit_provision_commit() {
 
@@ -47,7 +48,7 @@ function drush_hosting_git_commit_provision_commit() {
       $status = $git->getStatus();
 
       if (empty($status)) {
-        drush_log('[Git Status] Working Directory is clean. Nothing to commit.', 'devshop_log');
+        drush_log('[Git Status] Working Directory is clean. Nothing to commit.', 'ok');
       }
       else {
         devshop_process('git status', $git_path, dt('Git Status'));
@@ -82,7 +83,7 @@ function drush_hosting_git_commit_provision_commit() {
         $hostmaster_uri = d('hostmaster')->uri;
         $message = escapeshellarg("$message
 --------------
-Committed by OpenDevShop via http://$hostmaster_uri");
+Committed via http://$hostmaster_uri");
 
         devshop_process("git commit -m {$message}", $git_path, 'Committing changes to local repository...', array(
           'GIT_AUTHOR_NAME' => $name,
@@ -111,7 +112,7 @@ Committed by OpenDevShop via http://$hostmaster_uri");
     }
     catch (GitException $e) {
       drush_log('Git Error', 'devshop_command');
-      drush_log("Unable to load git repository at path " . $git_path, 'devshop_error');
+      drush_log("Unable to load git repository at path " . $git_path, 'error');
       drush_set_error($e->getMessage());
     }
   }
