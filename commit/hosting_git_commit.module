@@ -107,7 +107,7 @@ function hosting_task_commit_form($node) {
     '#title' => t('Message'),
     '#rows' => 2,
     '#type' => 'textarea',
-    '#description' => t('A commit message. A small automated timestamp will be added to indicate this was committed by devshop.'),
+    '#description' => t('A commit message. A small automated timestamp will be added to indicate this was committed by Aegir.'),
   );
   $form['push'] = array(
     '#title' => t('Push code after committing.'),
