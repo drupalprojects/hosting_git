@@ -3,6 +3,7 @@
 use GitWrapper\GitWrapper;
 use GitWrapper\GitWorkingCopy;
 use GitWrapper\GitException;
+
 /**
  * Implementation of hook_hosting_tasks()
  */
@@ -41,7 +42,7 @@ function hosting_task_commit_form($node) {
   try {
     $wrapper = new GitWrapper();
     $git = $wrapper->workingCopy($environment->repo_path);
-    $diff_stat = array_filter(explode(PHP_EOL,$wrapper->git('diff --numstat', $environment->repo_path)));
+    $diff_stat = array_filter(explode(PHP_EOL, $wrapper->git('diff --numstat', $environment->repo_path)));
     $status = array_filter(explode(PHP_EOL, $git->getStatus()));
 
     // Generate list of files
